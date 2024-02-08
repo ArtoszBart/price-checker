@@ -4,18 +4,27 @@ import { useState } from 'react';
 import 'chart.js/auto';
 import { ChartData } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import IPrice from '@/models/price';
+import Data from '@/models/Data';
+import '@/styles/components/charts.scss';
+import { preparePriceChartData } from '@/utils/charts';
 
-export default function LineChart({ data }: { data: IPrice[] }): JSX.Element {
-	const [userData, setUserData] = useState<ChartData<'line'>>({
-		labels: data.map((obj) => obj.date),
-		datasets: [
-			{
-				label: 'RTX 4080 Gaming X',
-				data: data.map((obj) => obj.price),
-			},
-		],
-	});
+export default function LineChart({
+	itemName,
+	data,
+}: {
+	itemName: string;
+	data: Data[];
+}): JSX.Element {
+	const [prices, setPrices] = useState<ChartData<'line'>>(
+		preparePriceChartData(itemName, data)
+	);
 
-	return <Line data={userData} />;
+	return (
+		<div className='chart-wrapper'>
+			<Line
+				data={prices}
+				options={{ aspectRatio: 1 | 2, maintainAspectRatio: true }}
+			/>
+		</div>
+	);
 }
