@@ -3,15 +3,14 @@ import Data from '@/models/Data';
 import { getDateTimeString } from '@/utils/formatters';
 
 export function preparePriceChartData(
-	itemName: string,
-	data: Data[]
+	itemData: [string, Data[]]
 ): ChartData<'line'> {
 	return {
-		labels: data.map((obj) => getDateTimeString(new Date(obj.date))),
+		labels: itemData[1].map((obj) => getDateTimeString(new Date(obj.date))),
 		datasets: [
 			{
-				label: itemName,
-				data: data.map((obj) => obj.price),
+				label: itemData[0],
+				data: itemData[1].map((obj) => obj.price),
 			},
 		],
 	};

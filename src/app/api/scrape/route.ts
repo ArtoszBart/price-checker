@@ -4,7 +4,6 @@ import { getItems } from '@/repository/postgres/itemRepository';
 import { insertData } from '@/repository/postgres/dataRepository';
 import { scrape } from '@/utils/scraping';
 import { NextResponse } from 'next/server';
-import { log } from 'console';
 
 export async function GET() {
 	const items: Item[] = (await getItems()) as Item[];
@@ -18,7 +17,7 @@ export async function GET() {
 
 	const { rowCount } = await insertData(newData);
 
-	if (rowCount !== 1) {
+	if (rowCount !== newData.length) {
 		console.log('+++++ An error has occured while inserting into db +++++');
 	}
 

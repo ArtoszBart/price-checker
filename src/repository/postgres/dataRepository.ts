@@ -1,9 +1,13 @@
 import { db } from '@vercel/postgres';
 import Data from '@/models/Data';
 
-export const getPrices = async () => {
-	const result = await db`SELECT * FROM Data`;
-	return result.rows;
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
+export const getData = async (itemId: number): Promise<Data[]> => {
+	const result = await db`SELECT * FROM Data WHERE itemId = ${itemId}`;
+
+	return result.rows as Data[];
 };
 
 export const insertData = async (data: Data[]) => {
@@ -21,7 +25,9 @@ export const insertData = async (data: Data[]) => {
 		values.push(...newValues);
 
 		const no: number = n * 5;
-		query += `(${no + 1}, ${no + 2}, ${no + 3}, ${no + 4}, ${no + 5}),`;
+		query += `($${no + 1}, $${no + 2}, $${no + 3}, $${no + 4}, $${
+			no + 5
+		}),`;
 	});
 	query = query.replace(/.$/, ';');
 

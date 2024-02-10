@@ -1,21 +1,10 @@
 import '../styles/pages/mainPage.scss';
 import Chart from '@/components/Chart';
-import Data from '@/models/Data';
-import { getPrices } from '@/repository/postgres/dataRepository';
-
-// async function getPrices() {
-// 	const result = await fetch(`${process.env.BASE_URL}/api/prices`);
-// 	console.log(result);
-
-// 	if (!result.ok) {
-// 		console.log(result);
-// 	}
-// 	return result.json();
-// }
+import Item from '@/models/Item';
+import { getItems } from '@/repository/postgres/itemRepository';
 
 export default async function Home() {
-	const result = await getPrices();
-	const data: Data[] = result as Data[];
+	const items: Item[] = await getItems();
 
 	return (
 		<main className='main'>
@@ -27,7 +16,10 @@ export default async function Home() {
 					</a>
 				</div>
 			</div>
-			<Chart itemName='TODO page.tsx|30' data={data} />
+
+			{items && items.length > 0 && (
+				<Chart items={JSON.parse(JSON.stringify(items))} />
+			)}
 
 			<div className='grid'>
 				<a

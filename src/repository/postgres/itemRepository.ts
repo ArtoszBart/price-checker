@@ -1,9 +1,8 @@
-import Data from '@/models/Data';
 import Item from '@/models/Item';
 import Vendor from '@/models/Vendor';
 import { db } from '@vercel/postgres';
 
-export const getItems = async () => {
+export const getItems = async (): Promise<Item[]> => {
 	const result =
 		await db`SELECT Item.Id, link, Item.Name, active, Vendor.Id as vendor_id, Vendor.Name as vendor_name FROM Item JOIN Vendor ON Item.vendorId = Vendor.Id;`;
 

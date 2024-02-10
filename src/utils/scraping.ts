@@ -15,12 +15,12 @@ export function scrape(item: Item): Promise<Data> {
 async function scrapeMorele(item: Item): Promise<Data> {
 	try {
 		const response = await axios.get(item.link);
-		const $ = cheerio.load(response.data);
+		const $: cheerio.CheerioAPI = cheerio.load(response.data);
 		let price: number | null = null;
 
 		$('#product_price_brutto').each(function () {
-			const asd = $(this);
-			const arr = asd.text().trim().split(',');
+			const asd: cheerio.Cheerio<cheerio.Element> = $(this);
+			const arr: string[] = asd.text().trim().split(',');
 
 			price = Number(arr[0].replace(' ', '').replace('zł', ''));
 		});
