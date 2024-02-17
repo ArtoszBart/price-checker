@@ -60,6 +60,9 @@ export default function LineChart({ items }: { items: Item[] }): JSX.Element {
 							scales: {
 								y1: {
 									position: 'right' as const,
+									ticks: {
+										stepSize: 10,
+									},
 								},
 							},
 						}}
