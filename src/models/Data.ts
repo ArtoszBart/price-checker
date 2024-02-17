@@ -5,7 +5,7 @@ export default class Data {
 	item: Item;
 	date: Date;
 	price: number | null;
-	quantity: string | null;
+	quantity: number | null;
 	availability: boolean | null;
 
 	constructor(
@@ -13,7 +13,7 @@ export default class Data {
 		item: Item,
 		date: Date,
 		price: number | null,
-		quantity: string | null,
+		quantity: number | null,
 		availability: boolean | null
 	) {
 		this.id = id;

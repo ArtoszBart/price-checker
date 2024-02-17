@@ -56,15 +56,15 @@ async function scrapeAmazon(item: Item): Promise<Data> {
 			if (price) price += shipping;
 		});
 
-		let availability: string | null = '0';
+		let availability: number | null = 0;
 
 		$('#availability').each(function () {
 			const element = $(this);
 			const textArray: string[] = element.text().trim().split(' ');
 			if (isNaN(Number(textArray[2]))) {
-				availability = '10+';
+				availability = 10;
 			} else {
-				availability = textArray[2];
+				availability = Number(textArray[2]);
 			}
 		});
 

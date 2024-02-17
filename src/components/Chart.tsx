@@ -43,10 +43,25 @@ export default function LineChart({ items }: { items: Item[] }): JSX.Element {
 			{selectedItemData && (
 				<div className='chart-wrapper'>
 					<Line
-						data={preparePriceChartData(selectedItemData)}
+						data={preparePriceChartData(selectedItemData[1])}
 						options={{
 							aspectRatio: 1 | 2,
 							maintainAspectRatio: true,
+							interaction: {
+								mode: 'index' as const,
+								intersect: false,
+							},
+							plugins: {
+								title: {
+									display: true,
+									text: selectedItemData[0],
+								},
+							},
+							scales: {
+								y1: {
+									position: 'right' as const,
+								},
+							},
 						}}
 					/>
 				</div>
