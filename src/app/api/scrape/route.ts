@@ -6,8 +6,12 @@ import { scrape } from '@/utils/scraping';
 import { NextResponse } from 'next/server';
 
 export async function GET() {
+	console.log('Started scraping');
+
 	const items: Item[] = (await getItems()) as Item[];
 	const newData: Data[] = [];
+
+	console.log(`Scraping ${items.length} items`);
 
 	await Promise.all(
 		items.map(async (item) => {
@@ -15,7 +19,10 @@ export async function GET() {
 		})
 	);
 
+	console.log(`Successfully scraped ${newData.length} items`);
+
 	const { rowCount } = await insertData(newData);
+	console.log(`Inserted ${rowCount} data rows`);
 
 	if (rowCount !== newData.length) {
 		console.log('+++++ An error has occured while inserting into db +++++');
