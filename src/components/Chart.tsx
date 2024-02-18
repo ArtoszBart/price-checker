@@ -23,6 +23,14 @@ export default function LineChart({ items }: { items: Item[] }): JSX.Element {
 		fetchData(value).catch(console.error);
 	};
 
+	const triggerScrape = () => {
+		console.log('trigger scrape');
+
+		axios
+			.get('http://localhost:3000/api/scrape')
+			.then((res) => console.log(res));
+	};
+
 	const fetchData = async (itemId: number): Promise<void> => {
 		axios.get(`/api/data?itemId=${itemId}`).then((asd) => {
 			const data: Data[] = asd.data.items as Data[];
@@ -69,6 +77,7 @@ export default function LineChart({ items }: { items: Item[] }): JSX.Element {
 					/>
 				</div>
 			)}
+			<button onClick={triggerScrape}>Update data</button>
 		</>
 	);
 }
