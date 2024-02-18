@@ -27,7 +27,7 @@ export default function LineChart({ items }: { items: Item[] }): JSX.Element {
 		console.log('trigger scrape');
 
 		axios
-			.get('http://localhost:3000/api/scrape')
+			.get('https://price-checker-nine.vercel.app/api/scrape')
 			.then((res) => console.log(res));
 	};
 
