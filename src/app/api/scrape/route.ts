@@ -5,7 +5,8 @@ import { insertData } from '@/repository/postgres/dataRepository';
 import { scrape } from '@/utils/scraping';
 import { NextResponse } from 'next/server';
 
-export async function GET() {
+export async function GET(req: any) {
+	const { searchParams } = new URL(req.url);
 	console.log('Started scraping');
 
 	const items: Item[] = (await getItems()) as Item[];
