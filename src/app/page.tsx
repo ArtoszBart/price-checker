@@ -1,5 +1,5 @@
 import '../styles/pages/mainPage.scss';
-import Chart from '@/components/Chart';
+import Chart from '@/components/Chart/Chart';
 import Item from '@/models/Item';
 import { getItems } from '@/repository/postgres/itemRepository';
 
