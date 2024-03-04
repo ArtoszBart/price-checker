@@ -1,5 +1,5 @@
 import Data from '@/models/Data';
-import { getData } from '@/repository/postgres/dataRepository';
+import { getItemData } from '@/repository/postgres/dataRepository';
 import { NextResponse } from 'next/server';
 
 export async function GET(req: any) {
@@ -10,7 +10,7 @@ export async function GET(req: any) {
 
 	if (!itemId) return NextResponse.json({}, { status: 400 });
 
-	const items: Data[] = await getData(Number(itemId));
+	const items: Data[] = await getItemData(Number(itemId));
 
 	return NextResponse.json({ items }, { status: 200 });
 }

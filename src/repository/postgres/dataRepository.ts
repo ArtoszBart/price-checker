@@ -4,7 +4,7 @@ import Data from '@/models/Data';
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-export const getData = async (itemId: number): Promise<Data[]> => {
+export const getItemData = async (itemId: number): Promise<Data[]> => {
 	const result = await db`SELECT * FROM Data WHERE itemId = ${itemId}`;
 
 	return result.rows as Data[];
