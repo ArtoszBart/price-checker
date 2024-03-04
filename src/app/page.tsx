@@ -8,15 +8,6 @@ export default async function Home() {
 
 	return (
 		<main className='main'>
-			<div className='description'>
-				<div></div>
-				<div>
-					<a href='#' target='_blank' rel='noopener noreferrer'>
-						By Bartosz Art
-					</a>
-				</div>
-			</div>
-
 			{items && items.length > 0 && (
 				<Chart items={JSON.parse(JSON.stringify(items))} />
 			)}

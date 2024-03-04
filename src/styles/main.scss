@@ -3,6 +3,34 @@
 
 $border-radius: 12px;
 
+header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 3rem 10rem;
+
+	.logo {
+		font-size: 2rem;
+		font-weight: 700;
+	}
+
+	& a {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0.5rem;
+	}
+	  
+	& p {
+		position: relative;
+		margin: 0;
+		padding: 1rem;
+		background-color: rgba(var(--callout-rgb), 0.5);
+		border: 1px solid rgba(var(--callout-border-rgb), 0.3);
+		border-radius: var(--border-radius);
+	}
+}
+
 .main {
 	display: flex;
 	flex-direction: column;
