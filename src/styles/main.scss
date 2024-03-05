@@ -31,12 +31,24 @@ header {
 	}
 }
 
+body {
+	min-height: 100vh;
+}
+
 .main {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
 	padding: 6rem;
-	min-height: 100vh;
 }
 
+footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding: 1rem;
+	border-top: 1px solid #555;
+	display: flex;
+	justify-content: center;
+}

@@ -23,11 +23,14 @@ export default function RootLayout({
 					</a>
 					<div>
 						<a href='#' target='_blank' rel='noopener noreferrer'>
-							By Bartosz Art
+							Log In
 						</a>
 					</div>
 				</header>
 				{children}
+				<footer>
+					<p>Developed by Bartosz Art</p>
+				</footer>
 			</body>
 		</html>
 	);

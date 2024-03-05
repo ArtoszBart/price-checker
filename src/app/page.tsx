@@ -26,7 +26,7 @@ export default async function Home() {
 							height={120}
 						></Image>
 						<p>
-							Check the "{item.name}" price history in{' '}
+							Check the &quot;{item.name}&quot; price history in{' '}
 							{item.vendor.name} on chart.
 						</p>
 					</a>
