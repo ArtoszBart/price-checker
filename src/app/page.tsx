@@ -1,6 +1,7 @@
 import '../styles/pages/mainPage.scss';
 import Item from '@/models/Item';
 import { getItems } from '@/repository/postgres/itemRepository';
+import Image from 'next/image';
 
 export default async function Home() {
 	const items: Item[] = await getItems();
@@ -18,7 +19,16 @@ export default async function Home() {
 						<h2>
 							{item.name} <span>-&gt;</span>
 						</h2>
-						<p>Check the "{item.name}" price history on chart.</p>
+						<Image
+							src={item.imageLink}
+							alt={''}
+							width={120}
+							height={120}
+						></Image>
+						<p>
+							Check the "{item.name}" price history in{' '}
+							{item.vendor.name} on chart.
+						</p>
 					</a>
 				))}
 			</div>

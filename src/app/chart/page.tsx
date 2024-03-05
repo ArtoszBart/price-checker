@@ -1,5 +1,3 @@
-// 'use client';
-
 import Chart from '@/components/Chart/Chart';
 import { getItemData } from '@/repository/postgres/dataRepository';
 

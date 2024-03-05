@@ -31,6 +31,10 @@
 		line-height: 1.5;
 		max-width: 30ch;
 	}
+	
+	& img {
+		margin: 1rem;
+	}
 
 	/* Enable hover only on non-touch devices */
 	@media (hover: hover) and (pointer: fine) {

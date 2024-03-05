@@ -18,7 +18,9 @@ export default function RootLayout({
 		<html lang='en'>
 			<body className={inter.className}>
 				<header>
-					<div className='logo'>PRICE CHECKER</div>
+					<a href='/'>
+						<div className='logo'>PRICE CHECKER</div>
+					</a>
 					<div>
 						<a href='#' target='_blank' rel='noopener noreferrer'>
 							By Bartosz Art
