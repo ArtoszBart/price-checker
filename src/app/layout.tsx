@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '../styles/main.scss';
+import AuthComponent from '@/components/auth/AuthComponent';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
 	description: 'Developed by Bartosz Art',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: {
 	children: React.ReactNode;
@@ -21,11 +22,7 @@ export default function RootLayout({
 					<a href='/'>
 						<div className='logo'>PRICE CHECKER</div>
 					</a>
-					<div>
-						<a href='#' target='_blank' rel='noopener noreferrer'>
-							Log In
-						</a>
-					</div>
+					<AuthComponent />
 				</header>
 				{children}
 				<footer>

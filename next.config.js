@@ -18,6 +18,10 @@ const nextConfig = {
 				protocol: 'https',
 				hostname: 'images.morele.net',
 			},
+			{
+				protocol: 'https',
+				hostname: 'lh3.googleusercontent.com',
+			},
 		],
 	},
 };
