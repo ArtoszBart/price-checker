@@ -1,4 +1,4 @@
-import Chart from '@/components/Chart/Chart';
+import Chart from '@/components/chart/Chart';
 import { getItemData } from '@/repository/postgres/dataRepository';
 
 export default async function ChartPage({

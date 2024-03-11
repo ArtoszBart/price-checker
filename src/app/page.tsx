@@ -24,6 +24,7 @@ export default async function Home() {
 							alt={''}
 							width={120}
 							height={120}
+							quality={25}
 						></Image>
 						<p>
 							Check the &quot;{item.name}&quot; price history in{' '}
