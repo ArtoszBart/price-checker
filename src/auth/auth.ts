@@ -51,10 +51,10 @@ export async function loginIsRequiredServer() {
 	if (!session) return redirect('/');
 }
 
-export async function loginIsRequiredClient() {
-	if (typeof window !== 'undefined') {
-		const session = useSession();
-		const router = useRouter();
-		if (!session) router.push('/');
-	}
-}
+// export async function loginIsRequiredClient() {
+// 	if (typeof window !== 'undefined') {
+// 		const session = useSession();
+// 		const router = useRouter();
+// 		if (!session) router.push('/');
+// 	}
+// }
