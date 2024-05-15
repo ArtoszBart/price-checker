@@ -1,3 +1,4 @@
+import { DataMin } from './Data';
 import Vendor from './Vendor';
 
 export default class Item {
@@ -20,4 +21,12 @@ export default class Item {
 		this.name = name;
 		this.imageLink = imageLink;
 	}
+}
+
+export interface ItemMin {
+	id: number | null;
+	name: string;
+	imageLink: string;
+	lastData: DataMin;
+	test: string;
 }

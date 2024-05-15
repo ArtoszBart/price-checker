@@ -24,3 +24,9 @@ export default class Data {
 		this.availability = availability;
 	}
 }
+
+export interface DataMin {
+	price: number | null;
+	quantity: number | null;
+	availability: boolean | null;
+}

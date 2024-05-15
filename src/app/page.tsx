@@ -16,9 +16,7 @@ export default async function Home() {
 						rel='noopener noreferrer'
 						key={idx}
 					>
-						<h2>
-							{item.name} <span>-&gt;</span>
-						</h2>
+						<h2>{item.name}</h2>
 						<Image
 							src={item.imageLink}
 							alt={''}
@@ -27,8 +25,8 @@ export default async function Home() {
 							quality={25}
 						></Image>
 						<p>
-							Check the &quot;{item.name}&quot; price history in{' '}
-							{item.vendor.name} on chart.
+							Check the &quot;{item.name}&quot; price history on
+							chart.
 						</p>
 					</a>
 				))}

@@ -1,0 +1,36 @@
+@use '../abstracts' as *;
+
+.notification-card {
+	width: 100%;
+	background-color: $cardColor;
+	border-radius: 1rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	transition: transform 200ms;
+	cursor: pointer;
+	padding: 1.5rem;
+	margin-block: 0.5rem;
+
+	@media (hover: hover) and (pointer: fine) {
+		&:hover {
+			transform: scale(102%);
+		}
+	}
+
+	&-identity {
+		display: flex;
+		align-items: center;
+		gap: 1.5rem;
+	}
+
+	th, td {
+		padding-inline: 0.5rem;
+		padding-block: 0.2rem;
+	}
+
+	td {
+		text-align: center;
+	}
+	
+}

@@ -1,7 +1,10 @@
+@use '../abstracts' as *;
+
 .button {
+	display: block;
 	color: black;
 	font-weight: 500;
-	background-color: #fff;
+	background-color: $buttonColor;
 	padding: 0.5rem 1rem;
 	border-radius: 7px;
 	transition: .1s ease-out;
