@@ -1,9 +1,10 @@
+import { NextResponse } from 'next/server';
+
 import Data from '@/models/Data';
 import Item from '@/models/Item';
 import { getItems } from '@/repository/postgres/itemRepository';
 import { insertData } from '@/repository/postgres/dataRepository';
 import { scrape } from '@/utils/scraping';
-import { NextResponse } from 'next/server';
 
 export async function GET(req: any) {
 	const { searchParams } = new URL(req.url);

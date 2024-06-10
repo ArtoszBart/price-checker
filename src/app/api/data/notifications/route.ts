@@ -1,6 +1,7 @@
+import { NextResponse, NextRequest } from 'next/server';
+
 import { Notification } from '@/models/Notification';
 import { createNotification } from '@/repository/postgres/notificationRepository';
-import { NextResponse, NextRequest } from 'next/server';
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
 	const notification: Notification = await req.json();

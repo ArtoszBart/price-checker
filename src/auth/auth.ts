@@ -1,15 +1,14 @@
+import { redirect } from 'next/navigation';
+import { NextAuthOptions, Session, getServerSession } from 'next-auth';
+import { JWT } from 'next-auth/jwt';
+import GoogleProvider from 'next-auth/providers/google';
+
 import User from '@/models/User';
 import {
 	getUser,
 	insertUser,
 	updateUser,
 } from '@/repository/postgres/userRepository';
-import { NextAuthOptions, Session, getServerSession } from 'next-auth';
-import { JWT } from 'next-auth/jwt';
-import CredentialsProvider from 'next-auth/providers/credentials';
-import GoogleProvider, { GoogleProfile } from 'next-auth/providers/google';
-import { useSession } from 'next-auth/react';
-import { redirect, useRouter } from 'next/navigation';
 
 export interface ISession {
 	id: number;

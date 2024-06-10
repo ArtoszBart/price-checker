@@ -1,7 +1,8 @@
-import '../styles/pages/mainPage.scss';
+import Image from 'next/image';
+
+import '@/styles/pages/mainPage.scss';
 import Item from '@/models/Item';
 import { getItems } from '@/repository/postgres/itemRepository';
-import Image from 'next/image';
 
 export default async function Home() {
 	const items: Item[] = await getItems();

@@ -1,8 +1,9 @@
 'use client';
 
-import { Form, Formik, FormikProps } from 'formik';
-import '@/styles/components/forms.scss';
 import { Ref } from 'react';
+import { Form, Formik, FormikProps } from 'formik';
+
+import '@/styles/components/forms.scss';
 
 interface IForm {
 	initialValues: Object;

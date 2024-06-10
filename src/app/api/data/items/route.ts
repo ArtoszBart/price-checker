@@ -1,6 +1,7 @@
+import { NextResponse, NextRequest } from 'next/server';
+
 import Item, { ItemMin } from '@/models/Item';
 import { getItemsMin, createItem } from '@/repository/postgres/itemRepository';
-import { NextResponse, NextRequest } from 'next/server';
 
 export async function GET(): Promise<NextResponse> {
 	const items: ItemMin[] = await getItemsMin();

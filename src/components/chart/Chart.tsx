@@ -1,13 +1,13 @@
 'use client';
 
 import 'chart.js/auto';
+import { useState } from 'react';
 import { Line } from 'react-chartjs-2';
+import { ChartData } from 'chart.js/auto';
 
 import '@/styles/components/charts.scss';
 import Data from '@/models/Data';
 import { options } from '@/utils/charts';
-import { useState } from 'react';
-import { ChartData } from 'chart.js/auto';
 import ChartFilterOption from '@/models/ChartFilterOption';
 
 export default function LineChart({ itemData }: { itemData: Data[] }) {

@@ -1,6 +1,7 @@
-import '@/styles/components/linkButton.scss';
 import React from 'react';
 import { getServerSession } from 'next-auth';
+
+import '@/styles/components/linkButton.scss';
 import { authConfig, ISession } from '@/auth/auth';
 import LoggedInComponent from '@/components/auth/LoggedInComponent';
 

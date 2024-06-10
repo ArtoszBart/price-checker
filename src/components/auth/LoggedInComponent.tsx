@@ -1,8 +1,8 @@
 'use client';
 
+import { useState } from 'react';
 import { signOut } from 'next-auth/react';
 import Image from 'next/image';
-import { useState } from 'react';
 
 export default function LoggedInComponent({
 	image,

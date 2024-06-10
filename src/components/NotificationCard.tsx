@@ -1,7 +1,8 @@
+import Image from 'next/image';
+
 import '@/styles/components/notificationCard.scss';
 import Item, { ItemLastData } from '@/models/Item';
 import { Notification } from '@/models/Notification';
-import Image from 'next/image';
 
 export default function NotificationCard({
 	notification,

@@ -1,10 +1,12 @@
-import Data from '@/models/Data';
-import Item from '@/models/Item';
 import axios from 'axios';
 import * as cheerio from 'cheerio';
 
+import Data from '@/models/Data';
+import Item from '@/models/Item';
+import Vendor from '@/models/Vendor';
+
 export function scrape(item: Item): Promise<Data> {
-	switch (item.vendor.id) {
+	switch ((item.vendor as Vendor).id) {
 		case 1:
 			return scrapeMorele(item);
 		case 2:
