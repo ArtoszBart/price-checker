@@ -1,8 +1,11 @@
+import { unstable_noStore as noStore } from 'next/cache';
+
 import Item, { ItemMin } from '@/models/Item';
 import Vendor from '@/models/Vendor';
 import { db } from '@vercel/postgres';
 
 export const getItems = async (): Promise<Item[]> => {
+	noStore();
 	const result =
 		await db`SELECT Item.Id, link, Item.Name, active, image_link, Vendor.Id as vendor_id, Vendor.Name as vendor_name FROM Item JOIN Vendor ON Item.vendorId = Vendor.Id;`;
 
