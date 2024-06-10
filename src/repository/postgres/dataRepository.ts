@@ -31,6 +31,7 @@ export const insertData = async (data: Data[]) => {
 		}),`;
 	});
 	query = query.replace(/.$/, ';');
+	console.log(query);
 
 	const result = await db.query(query, values);
 	return result;

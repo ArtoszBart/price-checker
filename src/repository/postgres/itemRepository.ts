@@ -21,6 +21,11 @@ export const getItems = async (): Promise<Item[]> => {
 		);
 	});
 
+	console.log('============================================================');
+	console.log('Repo got items:');
+	items.forEach((i) => console.log(i.id));
+	console.log('============================================================');
+
 	return items;
 };
 

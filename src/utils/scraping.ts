@@ -6,6 +6,8 @@ import Item from '@/models/Item';
 import Vendor from '@/models/Vendor';
 
 export function scrape(item: Item): Promise<Data> {
+	console.log('Scraping: ', item.id);
+
 	switch ((item.vendor as Vendor).id) {
 		case 1:
 			return scrapeMorele(item);
@@ -30,6 +32,7 @@ async function scrapeMorele(item: Item): Promise<Data> {
 		});
 
 		const data: Data = new Data(null, item, new Date(), price, null, null);
+		console.log(data);
 
 		return data;
 	} catch (error) {
@@ -103,7 +106,7 @@ async function scrapeAmazon(item: Item): Promise<Data> {
 	});
 	const availability: boolean = sum.length > 0;
 
-	return new Data(
+	const data: Data = new Data(
 		null,
 		item,
 		new Date(),
@@ -111,4 +114,7 @@ async function scrapeAmazon(item: Item): Promise<Data> {
 		null,
 		availability
 	);
+	console.log(data);
+
+	return data;
 }

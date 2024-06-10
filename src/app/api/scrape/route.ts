@@ -13,7 +13,10 @@ export async function GET(req: any) {
 	const items: Item[] = (await getItems()) as Item[];
 	const newData: Data[] = [];
 
-	console.log(`Scraping ${items.length} items`);
+	console.log('============================================================');
+	console.log(`Scraping ${items.length} items:`);
+	items.forEach((i) => console.log(i.id));
+	console.log('============================================================');
 
 	await Promise.all(
 		items.map(async (item) => {
