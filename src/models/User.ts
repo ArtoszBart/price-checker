@@ -1,11 +1,18 @@
 export default class User {
 	id: number | null;
-	firstName: string;
+	name: string;
 	email: string;
+	imageURL: string;
 
-	constructor(id: number | null, firstName: string, email: string) {
+	constructor(
+		id: number | null,
+		name: string,
+		email: string,
+		imageURL: string
+	) {
 		this.id = id;
-		this.firstName = firstName;
+		this.name = name;
 		this.email = email;
+		this.imageURL = imageURL;
 	}
 }

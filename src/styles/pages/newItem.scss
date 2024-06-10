@@ -1,0 +1,12 @@
+@use '../abstracts' as *;
+
+.form-image-preview {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	aspect-ratio: 1/1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid $borderColor;
+}

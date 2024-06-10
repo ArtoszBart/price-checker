@@ -1,4 +1,4 @@
-import Item from '@/models/Item';
+import Item, { ItemMin } from '@/models/Item';
 import Vendor from '@/models/Vendor';
 import { db } from '@vercel/postgres';
 
@@ -22,4 +22,25 @@ export const getItems = async (): Promise<Item[]> => {
 	});
 
 	return items;
+};
+
+export const getItemsMin = async (): Promise<ItemMin[]> => {
+	const result = await db`SELECT id, name FROM item WHERE active = true;`;
+
+	const items: ItemMin[] = [];
+	result.rows.forEach((row) => {
+		items.push({ id: row.id, name: row.name });
+	});
+
+	return items;
+};
+
+export const createItem = async (item: Item): Promise<boolean> => {
+	const result = await db`
+			INSERT INTO Item (vendorId, link, name, image_link)
+			VALUES (${item.vendor as number}, ${item.link}, ${item.name}, ${
+		item.imageLink
+	})`;
+
+	return result.rowCount === 1 ? true : false;
 };

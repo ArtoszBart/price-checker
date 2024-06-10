@@ -1,20 +1,19 @@
 import '@/styles/components/linkButton.scss';
-import React, { useState } from 'react';
+import React from 'react';
 import { getServerSession } from 'next-auth';
-import { authConfig } from '@/auth/auth';
-import LogoutButton from '@/components/auth/LoggedInComponent';
-import Image from 'next/image';
+import { authConfig, ISession } from '@/auth/auth';
 import LoggedInComponent from '@/components/auth/LoggedInComponent';
 
 export default async function AuthComponent() {
 	const session = await getServerSession(authConfig);
+	const user = session?.user as ISession;
 
 	return (
 		<div className='auth-container'>
 			{session ? (
 				<LoggedInComponent
-					image={session.user?.image || ''}
-					name={session.user?.name || ''}
+					image={user.imageURL || ''}
+					name={user.name || ''}
 				/>
 			) : (
 				<a

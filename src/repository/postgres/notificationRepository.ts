@@ -31,11 +31,23 @@ export const getUserNotifications = async (
 						quantity: row.quantity,
 						availability: row.availability,
 					},
-					test: 'xD',
 				}
 			)
 		);
 	});
 
 	return notifications;
+};
+
+export const createNotification = async (
+	notification: Notification
+): Promise<boolean> => {
+	const result = await db`
+			INSERT INTO Notification (target_price, target_quantity, target_availability, item_id, account_id)
+			VALUES (${notification.targetPrice}, ${notification.targetQuantity}, ${
+		notification.targetAvailability
+	}, ${notification.item as number}, ${notification.user as number})`;
+	console.log(result);
+
+	return result.rowCount === 1 ? true : false;
 };

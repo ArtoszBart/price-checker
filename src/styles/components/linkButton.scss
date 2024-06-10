@@ -8,7 +8,11 @@
 	padding: 0.5rem 1rem;
 	border-radius: 7px;
 	transition: .1s ease-out;
-
+	border: none;
+	cursor: pointer;
+	font-family: inherit;
+	font-size: inherit;
+	
 	&:hover {
 		transform: scale(110%);
 	}

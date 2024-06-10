@@ -15,3 +15,9 @@ export function getDateString(date: Date): string {
 		.toString()
 		.padStart(2, '0')}.${date.getFullYear()}`;
 }
+
+export function getBoolValue(string: string | null | boolean): boolean | null {
+	if (string === 'true') return true;
+	if (string === 'false') return false;
+	return null;
+}

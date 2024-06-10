@@ -16,6 +16,6 @@ In this project, I developed my skills in Next.js 13, TypeScript, PostgreSQL, CI
 -   [x] Store data in database
 -   [x] Display data as a chart
 -   [x] Filter chart data
--   [ ] User accouts
--   [ ] Managing item tracking
+-   [x] User accouts
+-   [x] Managing item tracking
 -   [ ] Email notifications

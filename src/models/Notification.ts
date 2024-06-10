@@ -1,4 +1,6 @@
-import Item, { ItemMin } from './Item';
+import * as Yup from 'yup';
+
+import Item, { ItemLastData } from './Item';
 import User from './User';
 
 export class Notification {
@@ -9,8 +11,8 @@ export class Notification {
 	lastQuantity: number | null;
 	targetAvailability: boolean | null;
 	lastAvailability: boolean | null;
-	item: Item | ItemMin;
-	user?: User;
+	item: Item | ItemLastData | number;
+	user?: User | number;
 
 	constructor(
 		id: number | null,
@@ -20,7 +22,7 @@ export class Notification {
 		lastQuantity: number | null,
 		targetAvailability: boolean | null,
 		lastAvailability: boolean | null,
-		item: Item | ItemMin,
+		item: Item | ItemLastData,
 		user?: User
 	) {
 		this.id = id;
@@ -34,3 +36,17 @@ export class Notification {
 		this.user = user;
 	}
 }
+
+export const NotificationSchema = Yup.object().shape({
+	item: Yup.number().required('Item must be selected'),
+	targetPrice: Yup.number()
+		.typeError('Price can only be digits with dot (.) separator')
+		.min(0, 'Price must be greater than 0')
+		.optional(),
+	targetQuantity: Yup.number()
+		.integer('Quantity can only be digits')
+		.typeError('Quantity can only be digits')
+		.min(0, 'Quantity must be greater than 0')
+		.optional(),
+	targetAvailability: Yup.bool().typeError('Wrong value').optional(),
+});
