@@ -14,7 +14,6 @@ import SubmitButton from '@/components/forms/SubmitButton';
 import { ItemMin } from '@/models/Item';
 import { Notification, NotificationSchema } from '@/models/Notification';
 import { getBoolValue } from '@/utils/formatters';
-import { sendEmail } from '@/repository/emailRepository';
 
 interface INotification {
 	item: number | undefined;
@@ -65,7 +64,6 @@ export default function NewNotificationPage() {
 	return (
 		<main>
 			<h1>Add new notification</h1>
-			<button onClick={() => sendEmail()}>Mail</button>
 			<Form
 				initialValues={initialValues}
 				onSubmit={(values: any, actions: any) => {

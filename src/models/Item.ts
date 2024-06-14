@@ -2,7 +2,7 @@ import * as Yup from 'yup';
 
 import { DataMin } from './Data';
 import Vendor from './Vendor';
-import { Notification, ScrapeNotification } from './Notification';
+import { ScrapeNotification } from './Notification';
 
 export default class Item {
 	id: number | null;

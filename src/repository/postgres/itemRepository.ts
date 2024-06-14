@@ -1,6 +1,6 @@
 import { unstable_noStore as noStore } from 'next/cache';
 
-import Item, { ItemLastData, ItemMin, ItemNotification } from '@/models/Item';
+import Item, { ItemMin, ItemNotification } from '@/models/Item';
 import Vendor from '@/models/Vendor';
 import { db } from '@vercel/postgres';
 
