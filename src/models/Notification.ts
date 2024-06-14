@@ -36,6 +36,25 @@ export class Notification {
 		this.user = user;
 	}
 }
+export interface ScrapeNotification {
+	targetPrice: number;
+	lastSendedPrice: number;
+	targetQuantity: number;
+	lastSendedQuantity: number;
+	targetAvailability: boolean;
+	lastSendedAvailability: boolean;
+	email: string;
+	id: number;
+}
+
+export interface NotificationToSend {
+	id: number;
+	email: string;
+	name: string;
+	price: number | null;
+	quantity: number | null;
+	availability: boolean | null;
+}
 
 export const NotificationSchema = Yup.object().shape({
 	item: Yup.number().required('Item must be selected'),

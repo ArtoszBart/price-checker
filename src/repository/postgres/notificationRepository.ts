@@ -1,15 +1,17 @@
 import { db } from '@vercel/postgres';
-import { Notification } from '@/models/Notification';
+import { Notification, NotificationToSend } from '@/models/Notification';
 
 export const getUserNotifications = async (
 	id: number
 ): Promise<Notification[]> => {
-	const result =
-		await db`SELECT notification.id, target_price, last_price, target_quantity, last_quantity, target_availability, last_availability, item.id as item_id, name, image_link, price, quantity, availability
+	const result = await db`
+		SELECT notification.id, target_price, last_price, target_quantity, last_quantity, target_availability, last_availability, item.id as item_id, name, image_link, price, quantity, availability
 		FROM notification 
 		JOIN item ON notification.item_id = item.id
 		JOIN data ON item.id = data.itemid
-		WHERE account_id = ${id} AND date = (SELECT MAX(date) as date FROM data WHERE data.itemid = item.id);`;
+		JOIN (SELECT MAX(Id) as Id FROM Data GROUP BY itemId) maxIds
+		ON Data.id = maxIds.id
+		WHERE account_id = ${id};`;
 
 	const notifications: Notification[] = [];
 	result.rows.forEach((row) => {
@@ -50,4 +52,17 @@ export const createNotification = async (
 	console.log(result);
 
 	return result.rowCount === 1 ? true : false;
+};
+
+export const updateNotificationsLastData = async (
+	notifications: NotificationToSend[]
+): Promise<void> => {
+	notifications.forEach(async (notification) => {
+		const result = await db`
+		UPDATE Notification 
+		SET last_price = ${notification.price}, last_quantity = ${notification.quantity}, last_availability = ${notification.availability}
+		WHERE Id = ${notification.id}
+		`;
+		if (result.rowCount !== 1) console.log(result);
+	});
 };

@@ -1,6 +1,6 @@
 import { unstable_noStore as noStore } from 'next/cache';
 
-import Item, { ItemMin } from '@/models/Item';
+import Item, { ItemLastData, ItemMin, ItemNotification } from '@/models/Item';
 import Vendor from '@/models/Vendor';
 import { db } from '@vercel/postgres';
 
@@ -24,11 +24,6 @@ export const getItems = async (): Promise<Item[]> => {
 		);
 	});
 
-	console.log('============================================================');
-	console.log('Repo got items:');
-	items.forEach((i) => console.log(i.id));
-	console.log('============================================================');
-
 	return items;
 };
 
@@ -38,6 +33,65 @@ export const getItemsMin = async (): Promise<ItemMin[]> => {
 	const items: ItemMin[] = [];
 	result.rows.forEach((row) => {
 		items.push({ id: row.id, name: row.name });
+	});
+
+	return items;
+};
+
+export const getItemsNotifications = async (): Promise<ItemNotification[]> => {
+	noStore();
+	const result = await db`
+			SELECT target_price, last_price, target_quantity, last_quantity, target_availability, last_availability, item.id as item_id, item.name as name, price, quantity, availability, email, link, vendorid, notification.id as notification_id
+			FROM notification 
+			JOIN item ON notification.item_id = item.id
+			JOIN data ON item.id = data.itemid
+			JOIN (SELECT MAX(Id) as Id FROM Data GROUP BY itemId) maxIds ON Data.id = maxIds.id
+			JOIN account ON Notification.account_id = Account.id
+			WHERE active = true;
+		`;
+
+	const items: ItemNotification[] = [];
+	result.rows.forEach((row) => {
+		const currentItem = items.find(
+			(item: ItemNotification) => item.itemId === row.item_id
+		);
+
+		if (!currentItem) {
+			items.push({
+				itemId: row.item_id,
+				name: row.name,
+				link: row.link,
+				vendor: row.vendorid,
+				lastData: {
+					price: row.price,
+					quantity: row.quantity,
+					availability: row.availability,
+				},
+				notifications: [
+					{
+						targetPrice: row.target_price,
+						lastSendedPrice: row.last_price,
+						targetQuantity: row.target_quantity,
+						lastSendedQuantity: row.last_quantity,
+						targetAvailability: row.target_availability,
+						lastSendedAvailability: row.last_availability,
+						email: row.email,
+						id: row.notification_id,
+					},
+				],
+			});
+		} else {
+			currentItem.notifications.push({
+				targetPrice: row.target_price,
+				lastSendedPrice: row.last_price,
+				targetQuantity: row.target_quantity,
+				lastSendedQuantity: row.last_quantity,
+				targetAvailability: row.target_availability,
+				lastSendedAvailability: row.last_availability,
+				email: row.email,
+				id: row.notification_id,
+			});
+		}
 	});
 
 	return items;

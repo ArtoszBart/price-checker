@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 
 import { DataMin } from './Data';
 import Vendor from './Vendor';
+import { Notification, ScrapeNotification } from './Notification';
 
 export default class Item {
 	id: number | null;
@@ -23,6 +24,19 @@ export default class Item {
 		this.name = name;
 		this.imageLink = imageLink;
 	}
+}
+
+export interface ItemNotification {
+	itemId: number;
+	name: string;
+	link: string;
+	vendor: number;
+	lastData: {
+		price: number;
+		quantity: number;
+		availability: boolean;
+	};
+	notifications: ScrapeNotification[];
 }
 
 export interface ItemLastData {

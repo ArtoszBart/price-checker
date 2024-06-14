@@ -12,7 +12,7 @@ import ComboBox, { IComboBoxOptions } from '@/components/forms/ComboBox';
 import Form from '@/components/forms/Form';
 import FormField from '@/components/forms/FormField';
 import SubmitButton from '@/components/forms/SubmitButton';
-import Item, { ItemMin } from '@/models/Item';
+import Item from '@/models/Item';
 import { ItemSchema } from '@/models/Item';
 import Vendor from '@/models/Vendor';
 import placeholderImage from '@/assets/images/placeholder.png';
