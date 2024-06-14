@@ -12,6 +12,7 @@
     "@types/nodemailer": "^6.4.15",
     "@vercel/postgres": "^0.5.1",
     "axios": "^1.6.2",
+    "braces": "^3.0.3",
     "chart.js": "^4.4.0",
     "cheerio": "^1.0.0-rc.12",
     "formik": "^2.4.6",
